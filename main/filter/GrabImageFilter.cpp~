@@ -1,0 +1,50 @@
+/*
+ * GrabImageFilter.cpp
+ *
+ *	Grabs an image from a Videohub
+ *
+ *  Created on: 28.06.2012
+ *      Author: jung
+ */
+
+#include "GrabImageFilter.h"
+
+/**
+ * Empty constructor.
+ */
+dsa::GrabImageFilter::GrabImageFilter(VideoHub &videoHub) : dsa::GrabFilter(videoHub) {
+}
+
+/**
+ * Destructor
+ *
+ * Nothing to destroy.
+ */
+dsa::GrabImageFilter::~GrabImageFilter() {
+}
+
+void dsa::GrabImageFilter::init() {
+}
+
+void dsa::GrabImageFilter::bypass() {
+}
+
+bool dsa::GrabImageFilter::isReady() const {
+	return(!((ImageSensorData*)data)->getImage().empty());
+}
+
+void dsa::GrabImageFilter::apply() {
+	GrabFilter::apply();
+	if(isReady()) {
+		dst = ((ImageSensorData*)data)->getImage();
+	}
+	
+	if(dst.empty())
+	{
+		std::cout<<"image is empty";
+		exit(EXIT_FAILURE);
+	}
+	cv::imwrite("raspicam_cv_image.jpg",dst);ss
+    	std::cout<<"Image saved at raspicam_cv_image.jpg"<<std::endl;
+
+}

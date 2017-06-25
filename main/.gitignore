@@ -1,0 +1,15 @@
+*.o
+fpga/*.*
+!*.jed
+!*.vhd
+!*.ldf
+fpga/dsa/*
+!fpga/dsa/source
+!fpga/dsa/source/pif.lpf
+!fpga/dsa/*.jed
+!fpga/*bcm2835*
+.sconsign.dblite
+ausgabe.csv
+!*.sty
+fpga/simu/*
+!fpga/ghdl.sh

@@ -1,0 +1,33 @@
+%YAML:1.0
+flipVertical: 0
+flipHorizontal: 1
+rotateImage: 1
+multiMarkerStrategy: 2
+regulationStrategy: 2
+poseEstimationAlgorithm: 5
+exponentialSmoothingAlpha: 1.0
+invertYAxis: 1
+detectionThresholdBlockSize: 21.0
+detectionThresholdSubtraction: 0.0
+detectionMinMarker: 0.01
+detectionMaxMarker: 1.0
+
+# multiMarkerStrategy:
+#	AVERAGE = 1,
+#	WGTAVERAGE = 2,
+#	GLOBALOPT = 3,
+#	WGTAVERAGEPREV = 4
+
+# regulationStrategy:
+#	NONE = 1,
+#	ROTATIONSUPPRESSION = 2,
+#	REGULATIONPOINTS = 3,
+#	PARALLELISM = 4
+
+# poseEstimationAlgorithm:
+#	ITERATIVE = 1,
+#	EPNP = 2, // F.Moreno-Noguer, V.Lepetit and P.Fua "EPnP: Efficient Perspective-n-Point Camera Pose Estimation"
+#	P3P = 3, // X.S. Gao, X.-R. Hou, J. Tang, H.-F. Chang; "Complete Solution Classification for the Perspective-Three-Point Problem
+#	POSIT = 4, // DeMenthon et al.
+#	PLANARPOSIT = 5,
+#	RPPAlgo = 6

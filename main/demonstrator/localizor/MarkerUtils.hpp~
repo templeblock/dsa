@@ -1,0 +1,61 @@
+/*
+ * MarkerUtils.hpp
+ *
+ *  Created on: 05.05.2013
+ *      Author: user
+ */
+
+#ifndef MARKERUTILS_HPP_
+#define MARKERUTILS_HPP_
+
+#include <aruco.h>
+#include <arucofidmarkers.h>
+#include <opencv2/opencv.hpp>
+
+
+using namespace cv;
+
+bool findMarkers(cv::Mat &image, std::vector<aruco::Marker> &markers, aruco::CameraParameters camparams, float threshBlockSize, float threshSubtract, float minMarker, float maxMarker) {
+	aruco::MarkerDetector detector;
+	detector.setThresholdMethod(aruco::MarkerDetector::ADPT_THRES);
+	detector.setThresholdParams(threshBlockSize, threshSubtract);
+	detector.setMinMaxSize(minMarker, maxMarker);
+	detector.detect(image, markers, camparams, 0); // last argument markerSize == 0
+												   // means "perform no pose estimation
+	if(markers.size() > 0){
+		std::cout<<"\n markers found"<<std::endl;
+		exit(EXIT_FAILURE);
+	}
+
+	return(markers.size() > 0);
+}
+
+bool findMarkers(cv::Mat &image, std::vector<aruco::Marker> &markers, aruco::CameraParameters camparams) {
+	return(findMarkers(image, markers, camparams, 21.0f, 0.0f, 0.001f, 0.5f));
+}
+
+void genMarkerPoints(float markerSize, Mat & m, bool homogeneous=false) {
+	float halfSize=markerSize/2.0f;
+	int rows = homogeneous ? 4 : 3;
+
+	m = Mat(rows,4,CV_32F);
+	m.at<float>(0,3)=-halfSize;
+	m.at<float>(1,3)=-halfSize;
+	m.at<float>(2,3)=0;
+	m.at<float>(0,2)=halfSize;
+	m.at<float>(1,2)=-halfSize;
+	m.at<float>(2,2)=0;
+	m.at<float>(0,1)=halfSize;
+	m.at<float>(1,1)=halfSize;
+	m.at<float>(2,1)=0;
+	m.at<float>(0,0)=-halfSize;
+	m.at<float>(1,0)=halfSize;
+	m.at<float>(2,0)=0;
+
+	if(homogeneous) {
+		m.row(3)=1;
+	}
+}
+
+
+#endif /* MARKERUTILS_HPP_ */

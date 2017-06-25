@@ -1,0 +1,6 @@
+%YAML:1.0
+markers:
+ - { id:1008, position:[ 0., 0., 0. ], rotation:[ 0., 0., -1.57 ], size: 2.5 }
+ # - { id:1008, position:[ 0., 0., 0. ], rotation:[ 0., 0., -1.57 ], size: 2.33333 }
+ # - { id:9991008, position:[ 0., 0., 0. ], rotation:[ 0., 0., -1.57 ], size: 3.888888 }
+ 

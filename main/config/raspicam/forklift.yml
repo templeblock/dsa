@@ -1,0 +1,35 @@
+%YAML:1.0
+rotationMarkerX: -14.5
+rotationMarkerY: 108.38
+rotationAxisX: 0.
+rotationAxisY: 15.0
+cameraX: 20.6 
+cameraY: 46.86
+heightMarkerOffset: 78.8
+forkTipDistance: 144.284
+#forkTipDistance: 130
+initialCameraRotation: -0.01745
+cameraXRotation: 0.18996
+rotationOffset: 0.27873
+# 0: pose estimation, 1: perimeter based
+heightMode: 1
+heightOffset: 0
+heightFormulaFactor: 25194
+heightFormulaExponent: -0.946
+#initialCameraRotation: 0.157
+
+# measure with calibration (average)
+x_markerMin: 64.1
+# measure with calibration (average)
+x_markerMax: 551.5
+# measure with calibration (average)
+y_markerMin: 948.2
+# measure with calibration (average)
+y_markerMax: 955.7
+# full tilt angle: 11.0 degrees according to jungheinrich datasheet
+fullTiltAngle: 0.19198622
+# calibrate with level
+zeroTiltAngleOffset: -0.0992
+
+#ForkPoseFilter	*filter62 = new ForkPoseFilter(settings, cv::Point2f(14.f, 5.8f), cv::Point2f(-1.284f, -42.209f), cv::Point2f(-6.581f, 76.105f), 144.284f, 51.3f);
+#ForkPoseFilter	*filter62 = new ForkPoseFilter(settings, cv::Point2f(14.5f, 43.5f), cv::Point2f(0.f, 0.f), cv::Point2f(-9.7f, 119.383f), 144.284f, 51.3f);

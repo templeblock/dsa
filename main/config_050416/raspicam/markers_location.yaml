@@ -1,0 +1,26 @@
+%YAML:1.0
+markers:
+   # kleine Marker, Halleneinfahrt:
+   - { id:270, position:[ 885.2, 234.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:423, position:[ 885.2, 334.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:517, position:[ 885.2, 434.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:606, position:[ 885.2, 534.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:652, position:[ 885.2, 634.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:153, position:[ 985.2, 183.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:205, position:[ 985.2, 283.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:364, position:[ 985.2, 383.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:331, position:[ 985.2, 483.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:59, position:[ 985.2, 583.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:273, position:[ 1085.2, 234.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:101, position:[ 1085.2, 334.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:66, position:[ 1085.2, 434.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:32, position:[ 1085.2, 534.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:22, position:[ 1085.2, 634.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:728, position:[ 1185.2, 383.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:659, position:[ 1185.2, 483.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   - { id:174, position:[ 1185.2, 583.1, 400. ], rotation:[ 0., 0., 1.57 ], size: 9.0 }
+   # Grosse Marker, Hallendecke:
+   - { id:861, position:[ 732.35, 1376.05, 1000. ], rotation:[ 0., 0., 1.57 ], size: 50.0 }
+   - { id:735, position:[ 1460.15, 1378.55, 1000. ], rotation:[ 0., 0., 1.57 ], size: 50.0 }
+   - { id:551, position:[ 2183.95, 1374.4, 1000. ], rotation:[ 0., 0., 1.57 ], size: 50.0 }
+   

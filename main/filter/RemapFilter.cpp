@@ -1,0 +1,66 @@
+/*
+ * RemapFilter.cpp
+ *
+ * 	See
+ *
+ *	http://docs.opencv.org/modules/imgproc/doc/geometric_transformations.html#remap
+ *
+ *	for details on the image filter.
+ *
+ *  Created on: 03.07.2012
+ *      Author: jung
+ */
+
+#include "RemapFilter.h"
+
+/**
+ * Constructor
+ *
+ * @param map1: The first map of either (x,y) points or just x values having the type CV_16SC2 , CV_32FC1 , or CV_32FC2.
+ * @param map2: The second map of y values having the type CV_16UC1 , CV_32FC1 , or none (empty map if map1 is (x,y) points), respectively.
+ * @param interpolation: Interpolation method.
+ * @param borderMode: Pixel extrapolation method.
+ * @param borderValue: Value used in case of a constant border. By default, it is 0.
+ */
+dsa::RemapFilter::RemapFilter(cv::Mat &map1, cv::Mat &map2, int interpolation, int borderMode, const cv::Scalar& borderValue) {
+	map1_ = map1;
+	map2_ = map2;
+	interpolation_ = interpolation;
+	borderMode_ = borderMode;
+	borderValue_ = borderValue;
+
+	init();
+}
+
+/**
+ * Destructor
+ *
+ * Nothing to destroy.
+ */
+dsa::RemapFilter::~RemapFilter() {
+}
+
+/**
+ * We use public pointers to the real arguments when running the OpenCV function, which may look stupid at first. But this allows
+ * a user to direct the pointer to any preceding or even succeeding filters output and thus adjust the input parameters to this
+ * filter automatically without having to write any further code for runtime behavior. In order for the filter to work with the
+ * default values, we have to map the pointers to those default values, which happen to be private. We could of course make those
+ * values also public, but then again, we only want to allow changes the way they are supposed to be changed to avoid confusion
+ * and mistakes, just as we would do in case of only exporting the values via getter and setter methods.
+ */
+void dsa::RemapFilter::init() {
+	map1 = &map1_;
+	map2 = &map2_;
+	interpolation = &interpolation_;
+	borderMode = &borderMode_;
+	borderValue = &borderValue_;
+}
+
+/**
+ * When filter is ready, run the OpenCV function.
+ */
+void dsa::RemapFilter::apply() {
+	if(isReady()) {
+		cv::remap(*src, dst, *map1, *map2, *interpolation, *borderMode,  *borderValue);
+	}
+}

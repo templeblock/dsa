@@ -1,0 +1,83 @@
+
+
+includes=['.','aruco/','edgel','../libs.raspicam-0.1.1','demonstrator/localizor/',
+         '/usr/local/include/opencv','/usr/local/include','../libs/raspicam-0.1.1/dependencies','../libs/raspicam-0.1.1/src',
+'../libs/ogles_gpgpu', '/opt/vc/include','/opt/vc/include/interface/vcos/pthreads','/opt/vc/include/interface/vmcs_host/linux',]
+compilerflags=['-std=c++0x','-w','-g','-O0','-fpermissive'] #,'-ftree-vectorize','-mfloat-abi=hard','-mfpu=vfp','-mtune=arm1176jzf-s','-ftree-vectorizer-verbose=1'] 
+#compilerflags=['-std=c++0x','-w','-s', '-DNDEBUG', '-O3','-fpermissive','-ftree-vectorize','-mfloat-abi=hard','-mfpu=vfp','-mtune=arm1176jzf-s','-ftree-vectorizer-verbose=1','-ffast-math']
+linkerflags=['-Wl,--allow-multiple-definition']
+#libs =['boost_system','boost_thread','boost_thread-mt']
+libs =[]
+
+
+libs+= Glob('/usr/local/lib/libopencv*.so')
+libs+= Glob('/lib/arm-linux-gnueabihf/libpthread.so.0')
+libs+=Glob('../libs/raspicam-0.1.1/build/src/libraspicam.so')
+libs+=Glob('../libs/raspicam-0.1.1/build/src/libraspicam.so.0.1')
+libs+=Glob('../zxing_cpp/build/libzxing.a')
+libs+= Glob('/usr/lib/libboost_system.so')
+libs+= Glob('/usr/lib/libboost_thread.so')
+libs+=Glob('/usr/lib/libboost_thread-mt.so')
+
+import platform
+ON_RASPBERRY=platform.machine()=='armv6l'
+#if ON_RASPBERRY:
+compilerflags+=['-DWITH_RASPICAM']
+includes+=['../raspicam_build/include']
+libs+=Glob('../raspicam_build/lib/*.so')
+compilerflags+=['-DWITH_FPGA']
+libs+=Glob('fpga/libbcm2835.a')
+
+env=Environment(CCFLAGS=compilerflags,
+                CPPPATH=includes,
+                LIBS=libs, 
+                LINKFLAGS=linkerflags)
+
+env.Append(LIBPATH = ['/opt/vc/lib'])
+env.Append(LIBS = ['GLESv2','EGL','bcm_host'])
+#env.Append(LIBS = ['GL','GLU','glut'])
+
+
+import SCons.Scanner
+import os
+
+def header_to_source(header_file):
+	"""Specify the location of the source file corresponding to a given
+	header file."""
+	return header_file.replace('include/', 'src/').replace('.hpp', '.cpp').replace('.h','.cpp')
+
+def source_files(main_file, env):
+	"""Returns list of source files the given main_file depends on.  With
+	the function header_to_source one must specify where to look for
+	the source file corresponding to a given header.  The resulting
+	list is filtered for existing files.  The resulting list contains
+	main_file as first element."""
+	## get the dependencies 
+	node = File(main_file)
+	scanner = SCons.Scanner.C.CScanner()
+	path = SCons.Scanner.FindPathDirs("CPPPATH")(env)
+	deps = node.get_implicit_deps(env, scanner, path)
+
+	## collect corresponding source files
+	root_path = env.Dir('#').get_abspath()
+	res = [main_file]
+    #print deps.length
+	for dep in deps:
+
+		source_path = header_to_source(
+			os.path.relpath(dep.get_abspath(), root_path))
+		if not source_path.endswith('.cpp'):
+			continue
+		if os.path.exists(os.path.join(root_path, source_path)):
+			res.append(source_path)
+
+        print source_path
+	if not ON_RASPBERRY:
+		try:res.remove('filter/FPGAFilter.cpp')
+		except:pass
+	return res
+
+src=source_files('main.cpp',env)
+
+env.Program('main',src)
+
