@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/raspicam.h
+cstdio
+-
+string
+-
+raspicamtypes.h
+../src/raspicamtypes.h
+
+../src/raspicamtypes.h
+
+/home/pi/markerDetection/libs/raspicam-0.1.1/utils/raspicam_test.cpp
+iostream
+-
+ctime
+-
+cstdlib
+-
+fstream
+-
+sstream
+-
+raspicam.h
+/home/pi/markerDetection/libs/raspicam-0.1.1/utils/raspicam.h
+

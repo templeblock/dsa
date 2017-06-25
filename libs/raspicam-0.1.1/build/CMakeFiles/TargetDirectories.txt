@@ -1,0 +1,7 @@
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/src/CMakeFiles/raspicam.dir
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/src/CMakeFiles/raspicam_cv.dir
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/utils/CMakeFiles/raspicam_cv_still_test.dir
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/utils/CMakeFiles/raspicam_cv_test.dir
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/utils/CMakeFiles/raspicam_still_test.dir
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/utils/CMakeFiles/raspicam_test.dir
+/home/pi/markerDetection/libs/raspicam-0.1.1/build/CMakeFiles/uninstall.dir

@@ -1,0 +1,57 @@
+%YAML:1.0
+
+# common
+lowerCannyThreshold: 0.1
+upperCannyThreshold: 0.26
+
+imageNr: 32
+
+workMode: 1
+
+allFrames: 0
+
+gain: 1.0
+exposure: 1
+brightness: 50
+contrast: 50
+
+# big marker, type1
+
+lHoughThreshold_t1: 12
+hHoughThreshold_t1: 35
+l2HoughThreshold_t1: 300
+h2HoughThreshold_t1: 300
+lPDistance_t1: 7
+uPDistance_t1: 43
+lowerCannyParam_t1n: 0.1
+upperCannyParam_t1n: 0.26
+lowerCannyParam_t1a: 0.24
+upperCannyParam_t1a: 0.33
+
+
+# medium marker, type2
+
+lHoughThreshold_t2: 41
+hHoughThreshold_t2: 52
+l2HoughThreshold_t2: 41
+h2HoughThreshold_t2: 52
+lPDistance_t2: 29
+uPDistance_t2: 38
+lowerCannyParam_t2n: 0.1
+upperCannyParam_t2n: 0.26
+lowerCannyParam_t2a: 0.24
+upperCannyParam_t2a: 0.33
+
+
+# small marker, type3
+
+lHoughThreshold_t3: 12
+hHoughThreshold_t3: 20
+l2HoughThreshold_t3: 10
+h2HoughThreshold_t3: 10
+lPDistance_t3: 24
+uPDistance_t3: 27
+lowerCannyParam_t3n: 0.1
+upperCannyParam_t3n: 0.26
+lowerCannyParam_t3a: 0.21
+upperCannyParam_t3a: 0.26
